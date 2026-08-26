@@ -1,21 +1,21 @@
 # RESQ — Response & Resource Coordination Microservice (`resq-response-service`)
 
 ## Student & Assessment Details
-- **Student Name:** Gamitha
-- **Student Number:** HDSE-ITS2130-ECA
-- **Slack Handle:** `@gamitha`
-- **GCP Project ID:** `resq-enterprise-cloud`
+- **Student Name:** H.V.Gamitha Gimhana Jayasanka
+- **Student ID / Number:** 241711007
+- **Slack Handle:** Gamitha Gimhana
+- **GCP Project ID:** `resq-enterprise-cloud-01`
 - **Course:** ITS 2130 — Enterprise Cloud Architecture
 
 ---
 
 ## 1. Project Description
-`resq-response-service` manages specialized emergency rescue teams, member skills, real-time GPS locations, and emergency disaster resource inventories (vehicles, life boats, medical kits, generators). It provides dynamic inventory reservation/allocation and release tracking for active disaster incidents.
+`resq-response-service` manages specialized emergency rescue teams, member skills, real-time GPS locations, and emergency disaster resource inventories (vehicles, life boats, medical kits, generators). It provides dynamic inventory reservation/allocation, atomic stock deduction, and automatic demobilization release tracking for active disaster incidents.
 
 ---
 
 ## 2. Technology Stack & Database Architecture
-- **Runtime:** Java 17 / 25
+- **Runtime:** Java 25 / 21 LTS
 - **Framework:** Spring Boot 3.3.5, Spring Data MongoDB
 - **Database (Non-Relational):** MongoDB (`resq_response` database)
 - **Collections:**
@@ -23,7 +23,7 @@
   - `resources`: Emergency logistics inventory, total vs. available counts
   - `resource_allocations`: Dynamic incident resource locks, allocations, and release audits
 - **Service Discovery:** Netflix Eureka Client
-- **Process Management:** PM2 on GCP Compute Engine VM
+- **Process Management:** PM2 on GCP Compute Engine Multi-Zone MIG
 
 ---
 
@@ -50,7 +50,7 @@
 
 ### Local Development
 ```bash
-# Compile and run (connecting to local MongoDB or Atlas)
+# Compile and run
 mvn clean spring-boot:run
 
 # Run unit tests
@@ -63,7 +63,7 @@ mvn clean test
 mvn clean package -DskipTests
 
 # Launch with PM2
-pm2 start target/resq-response-service-1.0.0.jar --name "resq-response-service"
+pm2 start /opt/resq/apps/resq-response-service-1.0.0.jar --name "resq-response-service"
 
 # Save PM2 state
 pm2 save
