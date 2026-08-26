@@ -52,6 +52,7 @@ public class DataInitializer implements CommandLineRunner {
                         new GeoLocation(new BigDecimal("6.7132"), new BigDecimal("79.9074")),
                         Arrays.asList("WATER_RESCUE", "FIRST_AID", "SWIFTWATER_NAVIGATION")
                 );
+                team1.setId("RESQ-TEAM-001");
 
                 ResponseTeam team2 = new ResponseTeam(
                         "RESQ-TEAM-002",
@@ -65,6 +66,7 @@ public class DataInitializer implements CommandLineRunner {
                         new GeoLocation(new BigDecimal("7.2513"), new BigDecimal("80.3464")),
                         Arrays.asList("LANDSLIDE_SEARCH", "K9_SEARCH", "HIGH_ANGLE_RESCUE")
                 );
+                team2.setId("RESQ-TEAM-002");
 
                 ResponseTeam team3 = new ResponseTeam(
                         "RESQ-TEAM-003",
@@ -78,6 +80,7 @@ public class DataInitializer implements CommandLineRunner {
                         new GeoLocation(new BigDecimal("6.9271"), new BigDecimal("79.8612")),
                         Arrays.asList("FIRE_EXTINGUISHING", "HAZMAT_CONTROL", "STRUCTURAL_SEARCH")
                 );
+                team3.setId("RESQ-TEAM-003");
 
                 teamRepository.saveAll(Arrays.asList(team1, team2, team3));
             }
@@ -86,10 +89,15 @@ public class DataInitializer implements CommandLineRunner {
                 log.info("Seeding initial demo emergency resources into MongoDB...");
 
                 Resource boat = new Resource("BOAT-001", "Inflatable Rescue Zodiac Boat", ResourceCategory.VEHICLE, 4, 3, ResourceStatus.AVAILABLE, "Panadura Base");
+                boat.setId("BOAT-001");
                 Resource ambulance = new Resource("AMB-001", "Advanced Life Support Ambulance", ResourceCategory.VEHICLE, 6, 5, ResourceStatus.AVAILABLE, "Colombo Central Base");
+                ambulance.setId("AMB-001");
                 Resource generator = new Resource("GEN-001", "Heavy-Duty Diesel Generator 50kVA", ResourceCategory.EQUIPMENT, 8, 8, ResourceStatus.AVAILABLE, "Kegalle Regional Depot");
+                generator.setId("GEN-001");
                 Resource waterRations = new Resource("WAT-001", "Emergency Clean Water Packs (1000L)", ResourceCategory.FOOD_WATER, 50, 45, ResourceStatus.AVAILABLE, "Western Province Warehouse");
+                waterRations.setId("WAT-001");
                 Resource drone = new Resource("DRN-001", "Thermal Imaging Search Drone", ResourceCategory.EQUIPMENT, 5, 4, ResourceStatus.AVAILABLE, "Disaster Management Center");
+                drone.setId("DRN-001");
 
                 resourceRepository.saveAll(Arrays.asList(boat, ambulance, generator, waterRations, drone));
             }
